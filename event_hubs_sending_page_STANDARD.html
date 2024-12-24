@@ -1,16 +1,16 @@
 <!doctype html>
-<html ⚡>
+<html></html>
 <head>
   <meta charset="utf-8">
-  <title>AMP page sending data to Azure Event Hub</title>
+  <title>HTML page sending data to Azure Event Hub</title>
   <link rel="canonical" href="self.html">
-  <link rel="icon" href="favicon_amp.png" type="image/x-icon">
+  <link rel="icon" href="favicon_html.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  <style amp-custom>
+  <style>
     body {font-family: Arial, sans-serif;}
   </style>
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <!-- <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>-->
   <script>
     async function fetchConfig() {
         const response = await fetch('./.vscode/config.json');
@@ -42,7 +42,7 @@
 </head>
 <body>
 
-<h1>Send Data to Event Hub through an AMP web page</h1>
+<h1>Send Data to Event Hub through a STANDARD web page</h1>
 <input type="text" id="dataInput" placeholder="Enter your data here">
 <button onclick="sendDataToEventHub()">Send Data</button>
 <div>
