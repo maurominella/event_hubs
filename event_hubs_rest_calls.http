@@ -1,0 +1,7 @@
+POST {{ehn_uri}}/messages
+Authorization: {{ehn_sas_token}}
+Content-Type: application/json
+
+{
+  "your": "data"
+} 

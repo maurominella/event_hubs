@@ -1,0 +1,6 @@
+{
+    "ehn_uri": "https://mmeventhubs01.servicebus.windows.net",
+    "eh_name": "event_hub_01",
+    "cors_uri": "https://cors-anywhere.herokuapp.com",
+    "ehn_sas_token": "SharedAccessSignature sr=https***"
+}

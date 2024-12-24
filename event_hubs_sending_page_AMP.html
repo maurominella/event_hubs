@@ -1,0 +1,56 @@
+<!doctype html>
+<html ⚡>
+<head>
+  <meta charset="utf-8">
+  <title>AMP Form Example</title>
+  <link rel="canonical" href="self.html">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <style amp-custom>
+    body {font-family: Arial, sans-serif;}
+  </style>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <script>
+    async function fetchConfig() {
+        const response = await fetch('./.vscode/config.json');
+        const config = await response.json();
+        return config;
+    }
+
+    async function sendDataToEventHub() {
+        const config = await fetchConfig();
+        const dataInput = document.getElementById('dataInput').value;
+        const url = `${config.ehn_uri}/${config.eh_name}/messages`; // `${cors_uri}/${config.ehn_uri}/${config.eh_name}/messages`;
+        const headers = new Headers();
+        headers.append("Authorization", config.ehn_sas_token);
+        headers.append("Content-Type", "application/json");
+      
+        const body = JSON.stringify({ "your": dataInput });
+      
+        fetch(url, {
+            method: 'POST',
+            headers: headers,
+            body: body // , mode: "no-cors"
+        })  
+        .then(response => response.text())
+        .then(result => alert('Success: ' + result))
+        .catch(error => alert('Error: ' + error));
+    }  
+    </script>
+
+</head>
+<body>
+
+<h1>Send Data to Event Hub through an AMP web page</h1>
+<input type="text" id="dataInput" placeholder="Enter your data here">
+<button onclick="sendDataToEventHub()">Send Data</button>
+<div>
+    Please run a local server with <em>python -m http.server 8000</em> if you are just doing  tests.
+</div>
+<div class="endpoint">
+    If needed, you may leverage <a href="https://cors-anywhere.herokuapp.com/" target="_blank">Cors Anywhere</a>. Daily authorization required.
+</div> 
+
+
+</body>
+</html>
